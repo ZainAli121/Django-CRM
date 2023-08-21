@@ -1,0 +1,94 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="container mt-5">
+    <div class="card">
+        <div class="card-header bg-dark text-light">
+            <h5 class="card-title">Add Record</h5>
+        </div>
+        <div class="card-body">
+            <form action="your_form_action_url_here" method="POST">
+                <!-- ID field (hidden, as it's usually auto-generated) -->
+                <input type="hidden" name="id" value="auto-generated">
+                
+                <!-- First Name field -->
+                <div class="form-group row">
+                    <label for="first_name" class="col-sm-3 col-form-label">First Name</label>
+                    <div class="col-sm-9">
+                        <input type="text" class="form-control" id="first_name" name="first_name" required>
+                    </div>
+                </div>
+                
+                <!-- Last Name field -->
+                <div class="form-group row">
+                    <label for="last_name" class="col-sm-3 col-form-label">Last Name</label>
+                    <div class="col-sm-9">
+                        <input type="text" class="form-control" id="last_name" name="last_name" required>
+                    </div>
+                </div>
+                
+                <!-- Email field -->
+                <div class="form-group row">
+                    <label for="email" class="col-sm-3 col-form-label">Email</label>
+                    <div class="col-sm-9">
+                        <input type="email" class="form-control" id="email" name="email" required>
+                    </div>
+                </div>
+                
+                <!-- Phone Number field -->
+                <div class="form-group row">
+                    <label for="phone_number" class="col-sm-3 col-form-label">Phone Number</label>
+                    <div class="col-sm-9">
+                        <input type="tel" class="form-control" id="phone_number" name="phone_number" required>
+                    </div>
+                </div>
+                
+                <!-- Address field -->
+                <div class="form-group row">
+                    <label for="address" class="col-sm-3 col-form-label">Address</label>
+                    <div class="col-sm-9">
+                        <input type="text" class="form-control" id="address" name="address" required>
+                    </div>
+                </div>
+                
+                <!-- City field -->
+                <div class="form-group row">
+                    <label for="city" class="col-sm-3 col-form-label">City</label>
+                    <div class="col-sm-9">
+                        <input type="text" class="form-control" id="city" name="city" required>
+                    </div>
+                </div>
+                
+                <!-- State field -->
+                <div class="form-group row">
+                    <label for="state" class="col-sm-3 col-form-label">State</label>
+                    <div class="col-sm-9">
+                        <input type="text" class="form-control" id="state" name="state" required>
+                    </div>
+                </div>
+                
+                <!-- Zipcode field -->
+                <div class="form-group row">
+                    <label for="zipcode" class="col-sm-3 col-form-label">Zipcode</label>
+                    <div class="col-sm-9">
+                        <input type="text" class="form-control" id="zipcode" name="zipcode" required>
+                    </div>
+                </div>
+                
+                <!-- Created At field (hidden, as it's usually auto-generated) -->
+                <input type="hidden" name="created_at" value="auto-generated">
+                
+                <!-- Submit button -->
+                <div class="form-group row">
+                    <div class="col-sm-9 offset-sm-3">
+                        <button type="submit" class="btn btn-primary">Add Record</button>
+                        <a href="{% url 'home' %}" class="btn btn-secondary">Back</a>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

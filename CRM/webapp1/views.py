@@ -54,3 +54,28 @@ def logout_user(request):
     logout(request)
     messages.success(request, 'User logged out successfully.')
     return redirect('login')
+
+
+def user_record(request, pk):
+    if request.user.is_authenticated:
+        record = Record.objects.get(id=pk)
+        return render(request, 'record.html', {'record': record})
+    
+    else:
+        messages.success(request, 'Please login to view this page.')
+        return redirect('login')
+    
+def delete_record(request, pk):
+    if request.user.is_authenticated:
+        record = Record.objects.get(id=pk)
+        record.delete()
+        messages.success(request, 'Record deleted successfully.')
+        return redirect('/')
+    
+    else:
+        messages.success(request, 'Please login to view this page.')
+        return redirect('login')
+    
+
+def add_record(request):
+    return render(request, 'add_record.html', {})
