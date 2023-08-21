@@ -3,13 +3,15 @@ from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.models import User
 from django.contrib import messages
 from . import models
+from .models import Record
 
 # Create your views here.
 def home(request):
+    records = Record.objects.all()
     if request.user.is_anonymous:
         return redirect('login')
     
-    return render(request, 'home.html', {})
+    return render(request, 'home.html', {'records': records})
 
 def signup_user(request):
     if request.method == 'POST':
@@ -20,12 +22,13 @@ def signup_user(request):
         # check if user already exists
         if User.objects.filter(username=username).exists():
             messages.error(request, 'Username already exists')
-            return render(request, 'signup.html', {})
+            return redirect('signup')
         
         # create user
-        user = User.objects.create(username=username, password=password, email=email)
-        user.save()
-        messages.success(request, 'User created successfully.')
+        else:
+            user = User.objects.create_user(username=username, password=password, email=email)
+            user.save()
+            messages.success(request, 'User created successfully.')
     return render(request, 'signup.html', {})
 
 def login_user(request):
