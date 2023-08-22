@@ -78,4 +78,53 @@ def delete_record(request, pk):
     
 
 def add_record(request):
+    if request.user.is_anonymous:
+        messages.success(request, 'Please login to view this page.')
+        return redirect('login')     
+    else:
+        if request.method == 'POST':
+            first_name = request.POST['first_name']
+            last_name = request.POST['last_name']
+            phone_number = request.POST['phone_number']
+            email = request.POST['email']
+            address = request.POST['address']
+            city = request.POST['city']
+            state = request.POST['state']
+            zipcode = request.POST['zipcode']
+    
+            record = Record.objects.create(first_name=first_name, last_name=last_name, phone_number=phone_number, email=email, address=address, city=city, state=state, zipcode=zipcode)
+            record.save()
+            messages.success(request, 'Record added successfully.')
+            return redirect('/')
     return render(request, 'add_record.html', {})
+
+def update_record(request, pk):
+    if request.user.is_authenticated:
+        record = Record.objects.get(id=pk)
+        if request.method == 'POST':
+            record.first_name = request.POST['first_name']
+            record.last_name = request.POST['last_name']
+            record.phone_number = request.POST['phone_number']
+            record.email = request.POST['email']
+            record.address = request.POST['address']
+            record.city = request.POST['city']
+            record.state = request.POST['state']
+            record.zipcode = request.POST['zipcode']
+            record.save()
+            messages.success(request, 'Record updated successfully.')
+            return redirect('/')
+        
+        else:
+            initial_data = {
+                'first_name': record.first_name,
+                'last_name': record.last_name,
+                'phone_number': record.phone_number,
+                'email': record.email,
+                'address': record.address,
+                'city': record.city,
+                'state': record.state,
+                'zipcode': record.zipcode
+
+            }
+
+            return render(request, 'update_record.html', {'record': record, 'initial_data': initial_data})

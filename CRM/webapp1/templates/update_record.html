@@ -5,7 +5,7 @@
 <div class="container mt-5">
     <div class="card">
         <div class="card-header bg-dark text-light">
-            <h5 class="card-title">Add Record</h5>
+            <h5 class="card-title">Update Record</h5>
         </div>
         <div class="card-body">
             <form method="post" action="" >
@@ -16,7 +16,7 @@
                 <div class="form-group row">
                     <label for="first_name" class="col-sm-3 col-form-label">First Name</label>
                     <div class="col-sm-9">
-                        <input type="text" class="form-control" id="first_name" name="first_name" required>
+                        <input type="text" class="form-control" id="first_name" value="{{record.first_name}}" name="first_name" required>
                     </div>
                 </div>
                 
@@ -24,7 +24,7 @@
                 <div class="form-group row">
                     <label for="last_name" class="col-sm-3 col-form-label">Last Name</label>
                     <div class="col-sm-9">
-                        <input type="text" class="form-control" id="last_name" name="last_name" required>
+                        <input type="text" class="form-control" id="last_name" value="{{record.last_name}}" name="last_name" required>
                     </div>
                 </div>
                 
@@ -32,7 +32,7 @@
                 <div class="form-group row">
                     <label for="email" class="col-sm-3 col-form-label">Email</label>
                     <div class="col-sm-9">
-                        <input type="email" class="form-control" id="email" name="email" required>
+                        <input type="email" class="form-control" id="email" value="{{record.email}}" name="email" required>
                     </div>
                 </div>
                 
@@ -40,7 +40,7 @@
                 <div class="form-group row">
                     <label for="phone_number" class="col-sm-3 col-form-label">Phone Number</label>
                     <div class="col-sm-9">
-                        <input type="tel" class="form-control" id="phone_number" name="phone_number" required>
+                        <input type="tel" class="form-control" id="phone_number" value="{{record.phone_number}}" name="phone_number" required>
                     </div>
                 </div>
                 
@@ -48,7 +48,7 @@
                 <div class="form-group row">
                     <label for="address" class="col-sm-3 col-form-label">Address</label>
                     <div class="col-sm-9">
-                        <input type="text" class="form-control" id="address" name="address" required>
+                        <input type="text" class="form-control" id="address" value="{{record.address}}" name="address" required>
                     </div>
                 </div>
                 
@@ -56,7 +56,7 @@
                 <div class="form-group row">
                     <label for="city" class="col-sm-3 col-form-label">City</label>
                     <div class="col-sm-9">
-                        <input type="text" class="form-control" id="city" name="city" required>
+                        <input type="text" class="form-control" id="city" value="{{record.city}}" name="city" required>
                     </div>
                 </div>
                 
@@ -64,7 +64,7 @@
                 <div class="form-group row">
                     <label for="state" class="col-sm-3 col-form-label">State</label>
                     <div class="col-sm-9">
-                        <input type="text" class="form-control" id="state" name="state" required>
+                        <input type="text" class="form-control" id="state" value="{{record.city}}" name="state" required>
                     </div>
                 </div>
                 
@@ -72,7 +72,7 @@
                 <div class="form-group row">
                     <label for="zipcode" class="col-sm-3 col-form-label">Zipcode</label>
                     <div class="col-sm-9">
-                        <input type="text" class="form-control" id="zipcode" name="zipcode" required>
+                        <input type="text" class="form-control" id="zipcode" value="{{record.zipcode}}" name="zipcode" required>
                     </div>
                 </div>
                 
@@ -82,7 +82,7 @@
                 <!-- Submit button -->
                 <div class="form-group row">
                     <div class="col-sm-9 offset-sm-3">
-                        <button type="submit" class="btn btn-primary">Add Record</button>
+                        <button type="submit" class="btn btn-primary">Update Record</button>
                         <a href="{% url 'home' %}" class="btn btn-secondary">Back</a>
                     </div>
                 </div>
